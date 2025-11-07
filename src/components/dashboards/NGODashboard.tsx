@@ -203,33 +203,21 @@ export default function NGODashboard({ user, crises, resources, volunteers }: NG
       <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-xl text-white">
         <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <button 
-            onClick={() => window.location.hash = '#crises'}
-            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all"
-          >
+          <button className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all">
             <AlertTriangle className="h-6 w-6 mb-2" />
             <span className="text-sm font-medium">Report Crisis</span>
           </button>
-          <button 
-            onClick={() => window.location.hash = '#resources'}
-            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all"
-          >
+          <button className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all">
             <Heart className="h-6 w-6 mb-2" />
             <span className="text-sm font-medium">Request Resources</span>
           </button>
-          <button 
-            onClick={() => window.location.hash = '#volunteers'}
-            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all"
-          >
+          <button className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all">
             <Users className="h-6 w-6 mb-2" />
             <span className="text-sm font-medium">Post Opportunity</span>
           </button>
-          <button 
-            onClick={() => window.location.hash = '#tasks'}
-            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all"
-          >
+          <button className="bg-white bg-opacity-20 hover:bg-opacity-30 p-4 rounded-lg transition-all">
             <CheckCircle className="h-6 w-6 mb-2" />
-            <span className="text-sm font-medium">Manage Tasks</span>
+            <span className="text-sm font-medium">Update Status</span>
           </button>
         </div>
       </div>

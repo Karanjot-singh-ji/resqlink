@@ -1,7 +1,6 @@
 import React from 'react';
-import { Heart, Bell, Users, Building, DollarSign, Shield, Menu, Search, MessageCircle, BarChart3, CheckSquare } from 'lucide-react';
+import { Heart, Bell, Users, Building, DollarSign, Shield, Menu, Search } from 'lucide-react';
 import { User } from '../types';
-import NotificationCenter from './NotificationCenter';
 
 interface HeaderProps {
   user: User;
@@ -9,12 +8,9 @@ interface HeaderProps {
   onNavigate: (section: string) => void;
   activeSection: string;
   onRoleSwitch: (role: User['role']) => void;
-  alerts: any[];
-  onMarkAsRead: (alertId: string) => void;
-  onMarkAllAsRead: () => void;
 }
 
-export default function Header({ user, activeAlerts, onNavigate, activeSection, onRoleSwitch, alerts, onMarkAsRead, onMarkAllAsRead }: HeaderProps) {
+export default function Header({ user, activeAlerts, onNavigate, activeSection, onRoleSwitch }: HeaderProps) {
   const getRoleConfig = (role: User['role']) => {
     switch (role) {
       case 'ngo':
@@ -27,10 +23,7 @@ export default function Header({ user, activeAlerts, onNavigate, activeSection, 
             { id: 'crises', label: 'Active Crises', icon: Heart },
             { id: 'resources', label: 'Resources', icon: Users },
             { id: 'volunteers', label: 'Volunteers', icon: Users },
-            { id: 'reports', label: 'Reports', icon: Bell },
-            { id: 'tasks', label: 'Tasks', icon: CheckSquare },
-            { id: 'communications', label: 'Communications', icon: MessageCircle },
-            { id: 'analytics', label: 'Analytics', icon: BarChart3 }
+            { id: 'reports', label: 'Reports', icon: Bell }
           ]
         };
       case 'volunteer':
@@ -42,9 +35,7 @@ export default function Header({ user, activeAlerts, onNavigate, activeSection, 
             { id: 'dashboard', label: 'My Dashboard', icon: Shield },
             { id: 'opportunities', label: 'Opportunities', icon: Heart },
             { id: 'my-activities', label: 'My Activities', icon: Users },
-            { id: 'training', label: 'Training', icon: Bell },
-            { id: 'tasks', label: 'My Tasks', icon: CheckSquare },
-            { id: 'communications', label: 'Communications', icon: MessageCircle }
+            { id: 'training', label: 'Training', icon: Bell }
           ]
         };
       case 'donor':
@@ -56,9 +47,7 @@ export default function Header({ user, activeAlerts, onNavigate, activeSection, 
             { id: 'dashboard', label: 'Overview', icon: Shield },
             { id: 'donate', label: 'Donate Now', icon: Heart },
             { id: 'my-donations', label: 'My Donations', icon: DollarSign },
-            { id: 'impact', label: 'Impact Reports', icon: Bell },
-            { id: 'communications', label: 'Communications', icon: MessageCircle },
-            { id: 'analytics', label: 'My Impact', icon: BarChart3 }
+            { id: 'impact', label: 'Impact Reports', icon: Bell }
           ]
         };
       case 'government':
@@ -70,10 +59,7 @@ export default function Header({ user, activeAlerts, onNavigate, activeSection, 
             { id: 'dashboard', label: 'Command Center', icon: Shield },
             { id: 'coordination', label: 'Coordination', icon: Users },
             { id: 'resources', label: 'Resource Allocation', icon: Building },
-            { id: 'analytics', label: 'Analytics', icon: Bell },
-            { id: 'tasks', label: 'Task Management', icon: CheckSquare },
-            { id: 'communications', label: 'Communications', icon: MessageCircle },
-            { id: 'reports', label: 'Reports', icon: BarChart3 }
+            { id: 'analytics', label: 'Analytics', icon: Bell }
           ]
         };
     }
@@ -156,12 +142,16 @@ export default function Header({ user, activeAlerts, onNavigate, activeSection, 
               </button>
             </div>
             
-            <NotificationCenter
-              user={user}
-              alerts={alerts}
-              onMarkAsRead={onMarkAsRead}
-              onMarkAllAsRead={onMarkAllAsRead}
-            />
+            <div className="relative">
+              <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                <Bell className="h-5 w-5" />
+                {activeAlerts > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-full min-w-[20px] text-center">
+                    {activeAlerts}
+                  </span>
+                )}
+              </button>
+            </div>
 
             <div className="flex items-center space-x-3">
               <div className="text-right">

@@ -8,9 +8,6 @@ import NGODashboard from './components/dashboards/NGODashboard';
 import VolunteerDashboard from './components/dashboards/VolunteerDashboard';
 import DonorDashboard from './components/dashboards/DonorDashboard';
 import GovernmentDashboard from './components/dashboards/GovernmentDashboard';
-import AnalyticsDashboard from './components/AnalyticsDashboard';
-import CommunicationHub from './components/CommunicationHub';
-import TaskManagement from './components/TaskManagement';
 import { User, Crisis, ResourceNeed, VolunteerOpportunity, NGO, Donation, Alert } from './types';
 
 function App() {
@@ -317,49 +314,6 @@ function App() {
     setActiveSection('dashboard');
   };
 
-  const handleMarkAsRead = (alertId: string) => {
-    setAlerts(prev => prev.map(alert => 
-      alert.id === alertId ? { ...alert, acknowledged: true } : alert
-    ));
-  };
-
-  const handleMarkAllAsRead = () => {
-    setAlerts(prev => prev.map(alert => ({ ...alert, acknowledged: true })));
-  };
-
-  const [alerts, setAlerts] = useState<Alert[]>([
-    {
-      id: '1',
-      title: 'Critical Resource Shortage',
-      message: 'Urgent need for medical supplies in Turkey earthquake zone.',
-      type: 'emergency',
-      severity: 'critical',
-      targetRoles: ['ngo', 'government'],
-      crisisId: '1',
-      timestamp: '2024-02-08T08:00:00Z',
-      acknowledged: false
-    },
-    {
-      id: '2',
-      title: 'New Volunteer Applications',
-      message: '15 new volunteers have applied for medical response team.',
-      type: 'info',
-      severity: 'medium',
-      targetRoles: ['ngo'],
-      timestamp: '2024-02-08T09:30:00Z',
-      acknowledged: false
-    },
-    {
-      id: '3',
-      title: 'Donation Milestone Reached',
-      message: 'Turkey earthquake relief fund has reached $50M milestone.',
-      type: 'success',
-      severity: 'low',
-      timestamp: '2024-02-08T11:15:00Z',
-      acknowledged: false
-    }
-  ]);
-
   const renderContent = () => {
     switch (activeSection) {
       case 'dashboard':
@@ -404,19 +358,6 @@ function App() {
             onMakeDonation={handleMakeDonation}
           />
         );
-      case 'analytics':
-        return (
-          <AnalyticsDashboard
-            user={user}
-            crises={crises}
-            donations={donations}
-            volunteers={volunteers}
-          />
-        );
-      case 'communications':
-        return <CommunicationHub user={user} />;
-      case 'tasks':
-        return <TaskManagement user={user} />;
       default:
         return renderDashboard();
     }
@@ -441,13 +382,10 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Header 
         user={user}
-        activeAlerts={alerts.filter(a => !a.acknowledged).length}
+        activeAlerts={unacknowledgedAlerts}
         onNavigate={setActiveSection}
         activeSection={activeSection}
         onRoleSwitch={handleRoleSwitch}
-        alerts={alerts}
-        onMarkAsRead={handleMarkAsRead}
-        onMarkAllAsRead={handleMarkAllAsRead}
       />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {renderContent()}
