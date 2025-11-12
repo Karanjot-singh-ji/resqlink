@@ -1,7 +1,7 @@
 # 🚨 ResQLink - Emergency Response Platform
 
 <div align="center">
-  <img src="https://github.com/Karanjot-singh-ji/resqlink/blob/main/ResQLink%20Logo.png" alt="ResQLink Banner" width="800" height="300" style="border-radius: 10px; object-fit: cover;">
+  <img src="https://github.com/Karanjot-singh-ji/resqlink/blob/main/ResQLink%20Logo.png" alt="ResQLink Banner" height="300" style="border-radius: 10px; object-fit: cover;">
   
   **Connecting aid. Restoring hope.**
   
