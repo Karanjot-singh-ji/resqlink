@@ -1,7 +1,7 @@
 # 🚨 ResQLink - Emergency Response Platform
 
 <div align="center">
-  <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ResQLink Banner" width="800" height="300" style="border-radius: 10px; object-fit: cover;">
+  <img src=" https://github.com/Karanjot-singh-ji/resqlink/ResQLink logo.png" alt="ResQLink Banner" width="800" height="300" style="border-radius: 10px; object-fit: cover;">
   
   **Connecting aid. Restoring hope.**
   
@@ -300,7 +300,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 📞 **Contact & Support**
 
 ### **Get Help**
-- 📧 **Email**: support@resqlink.org
+- 📧 **Email**: karanjot032004@gmaol.com
 - 💬 **Discord**: [Join our community](https://discord.gg/resqlink)
 - 📖 **Documentation**: [docs.resqlink.org](https://docs.resqlink.org)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/your-username/resqlink/issues)
